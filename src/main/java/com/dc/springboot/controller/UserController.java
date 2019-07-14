@@ -1,5 +1,8 @@
 package com.dc.springboot.controller;
 
+import com.dc.springboot.bean.DcFile;
+import com.dc.springboot.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,10 +18,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-    @RequestMapping("/hello")
+    @Autowired
+    private User user;
+
+    @Autowired
+    private DcFile dcFile;
+
+    @RequestMapping("/user")
     @ResponseBody
-    public String hello() {
-        return "DIO: The World!!!!";
+    public String user() {
+        return user.toString();
+    }
+
+    @RequestMapping("/file")
+    @ResponseBody
+    public String file() {
+        return dcFile.toString();
     }
 
 }
