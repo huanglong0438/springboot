@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3da78de0_654d5614",
+        "filename": "src/main/java/com/dc/springboot/configuration/DcConfiguration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1016801
+      },
+      "writtenOn": "2019-07-18T10:02:29Z",
+      "side": 1,
+      "message": "牛逼",
+      "revId": "41a7aa9aacbce57d29cd841339ac775ec256b481",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
