@@ -1,6 +1,12 @@
 package com.dc.springboot.controller;
 
+<<<<<<< HEAD
 import com.dc.configs.PropertiesManager;
+=======
+import com.dc.springboot.bean.DcFile;
+import com.dc.springboot.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> b18728b4d63cf16181008240fffcdca544d29d71
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
+    @Autowired
+    private User user;
+
+    @Autowired
+    private DcFile dcFile;
+
     private PropertiesManager propertiesManager;
 
     public UserController(PropertiesManager propertiesManager) {
@@ -25,7 +37,19 @@ public class UserController {
     @RequestMapping("/hello")
     @ResponseBody
     public String hello() {
-        return "DIO: The World!!!!";
+        return "The World!!!";
+    }
+
+    @RequestMapping("/user")
+    @ResponseBody
+    public String user() {
+        return user.toString();
+    }
+
+    @RequestMapping("/file")
+    @ResponseBody
+    public String file() {
+        return dcFile.toString();
     }
 
     @RequestMapping("/http")
