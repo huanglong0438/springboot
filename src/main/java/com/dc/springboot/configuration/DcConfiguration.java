@@ -21,7 +21,7 @@ public class DcConfiguration {
     @Bean
     protected User getUser() {
         User user = new User();
-        user.setUserId(6699902L);
+        user.setUserId(6324L);
         user.setUserName("The World");
         return user;
     }
