@@ -4,6 +4,7 @@ import com.dc.configs.HttpService;
 import com.dc.configs.PropertiesManager;
 import com.dc.springboot.bean.DcFile;
 import com.dc.springboot.bean.User;
+import com.dc.starter.Calculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,15 +29,18 @@ public class UserController {
 
     private PropertiesManager propertiesManager;
 
+    public UserController(PropertiesManager propertiesManager) {
+        this.propertiesManager = propertiesManager;
+    }
+
     /**
      * 这里用了beanHttpServer可以直接注入PropertiesManager中配置的HttpService
      */
     @Autowired
     private HttpService beanHttpServer;
 
-    public UserController(PropertiesManager propertiesManager) {
-        this.propertiesManager = propertiesManager;
-    }
+    @Autowired
+    private Calculator calculator;
 
     @RequestMapping("/hello")
     @ResponseBody
@@ -60,6 +64,12 @@ public class UserController {
     @ResponseBody
     public String httpService() {
         return beanHttpServer.getServiceUrl();
+    }
+
+    @RequestMapping("calculate")
+    @ResponseBody
+    public String calculate() {
+        return "1 + 2 = " + calculator.add(1, 2);
     }
 
 }
