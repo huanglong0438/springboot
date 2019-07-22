@@ -1,5 +1,6 @@
 package com.dc.springboot.controller;
 
+import com.dc.configs.HttpService;
 import com.dc.configs.PropertiesManager;
 import com.dc.springboot.bean.DcFile;
 import com.dc.springboot.bean.User;
@@ -27,6 +28,12 @@ public class UserController {
 
     private PropertiesManager propertiesManager;
 
+    /**
+     * 这里用了beanHttpServer可以直接注入PropertiesManager中配置的HttpService
+     */
+    @Autowired
+    private HttpService beanHttpServer;
+
     public UserController(PropertiesManager propertiesManager) {
         this.propertiesManager = propertiesManager;
     }
@@ -52,7 +59,7 @@ public class UserController {
     @RequestMapping("/http")
     @ResponseBody
     public String httpService() {
-        return propertiesManager.httpService().getServiceUrl();
+        return beanHttpServer.getServiceUrl();
     }
 
 }

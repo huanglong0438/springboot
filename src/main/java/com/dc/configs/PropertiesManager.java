@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Primary;
 @EnableConfigurationProperties(HttpService.class)
 public class PropertiesManager {
 
-    @Bean
+    @Bean(name = "beanHttpServer")
     @ConfigurationProperties(prefix = "httpserver")
     public HttpService httpService() {
         return new HttpService();
