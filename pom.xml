@@ -55,6 +55,48 @@
         </dependency>
     </dependencies>
 
+    <!-- 根据不同的编译命令设置不同的Start-class（也可以用PropertiesLauncher实现） -->
+    <profiles>
+        <profile>
+            <id>web</id>
+            <properties>
+                <start-class>com.dc.springboot.App</start-class>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dispatcher</id>
+            <properties>
+                <start-class>com.dc.multapp.AppDispatcher</start-class>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 
 
 </project>
